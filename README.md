@@ -33,6 +33,8 @@
 - Allow for Multiplayer
 --Mode 1: User 1 selects sequence and User 2 attempts to solve
 --Mode 2: User 1 and User 2 compete to see who can solve in the least number of steps
+-Single  Player (Hard Mode):
+--Not only color pegs, but different colored shapes. So you have to guess the color and the shape to get right.
 ### Screenshots
 ### GitHub Link
 https://github.com/laddeyboy/mastermind
