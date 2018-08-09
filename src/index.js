@@ -8,6 +8,7 @@ import registerServiceWorker from './registerServiceWorker'
 // React Router Dependencies
 import {Route, BrowserRouter} from 'react-router-dom'
 import IntroScreen from './Components/IntroScreen'
+import GameScreen from './Components/GameScreen'
 
 class App extends Component {
   render () {
@@ -15,8 +16,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Route path={'/'} exact component={IntroScreen} />
-          {/* <Route path={'/questions'} exact component={QuestionPage} />
-          <Route path={'/endgame'} exact component={EndGame} /> */}
+          <Route path={'/game'} exact component={GameScreen} />
         </div>
       </BrowserRouter>
     )

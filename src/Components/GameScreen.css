@@ -1,0 +1,9 @@
+.GameScreen-btn {
+  position: absolute;
+  right: 0px;
+  width: 200px;
+  height: 35px;
+  font-size: 16px;
+  border-radius: 15px;
+  background-color: #00d8ff
+}
