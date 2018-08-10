@@ -1,3 +1,10 @@
+.GameScreen-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  color: white; 
+}
+
 .GameScreen-btn {
   position: absolute;
   right: 0px;
@@ -6,4 +13,15 @@
   font-size: 16px;
   border-radius: 15px;
   background-color: #00d8ff
+}
+
+.GameScreen-board {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  color: black;
+}
+
+h1 {
+  padding-top: 130px;
 }
