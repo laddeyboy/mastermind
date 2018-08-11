@@ -1,12 +1,19 @@
 import React, {Component} from 'react'
 import './Modal.css'
+import './Button'
 
 // Redux Imports
 import {connect} from 'react-redux'
 import {toggleMainModalWindow, setPlayerName} from '../redux/actions'
+import { SoloGameModeButtons, MultiGameModeButtons } from './Button';
 
 class Modal extends Component {
   onBtnClick (e) {
+    if(e.target.value == 'single'){
+      console.log("YOU WANT SINGLE PLAYER")
+    } else {
+      console.log("YOU WANT MULTIPLAYER")
+    }
     this.props.toggleMainModal()
   }
 
@@ -24,12 +31,15 @@ class Modal extends Component {
               placeholder="Enter Player Name"
               onChange={e => this.props.setPlayerName(e.target.value)}></input>
           </div>
-
-          <label htmlFor="btns">Select a game mode:</label><br/>
-          <button className="Modal-btn" id="btns"
-            onClick={() => this.onBtnClick()}>Single Player</button>
-          <button className="Modal-btn"
-            onClick={() => this.onBtnClick()}>Multiplyer</button>
+          <div className="Modal-buttons">
+            <label htmlFor="btns">Select a game mode:</label><br/>
+            <button className="Modal-btn" id="btns" value="single"
+              onClick={(e) => this.onBtnClick(e)}>Single Player</button>
+            <button className="Modal-btn"
+              onClick={() => this.onBtnClick()}>Multiplayer</button>
+          </div>
+          {/* <SoloGameModeButtons />
+          <MultiGameModeButtons /> */}
         </div>
       </div>
     )
@@ -44,11 +54,9 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return {
     toggleMainModal: () => {
-      console.log('[Moda.js] Sending toggelMainModal request....')
       dispatch(toggleMainModalWindow())
     },
     setPlayerName: (data) => {
-      console.log('[Modal.js] Sending player name to store...', data)
       dispatch(setPlayerName())
     }
   }
