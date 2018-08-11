@@ -3,4 +3,4 @@ import mmStore from './reducers'
 
 var store = createStore(mmStore)
 
-export defaut store
+export default store

@@ -10,6 +10,10 @@ import {Route, BrowserRouter} from 'react-router-dom'
 import IntroScreen from './Components/IntroScreen'
 import GameScreen from './Components/GameScreen'
 
+// Redux Dependencies
+import {Provider} from 'react-redux'
+import store from './redux/store'
+
 class App extends Component {
   render () {
     return (
@@ -23,5 +27,8 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+  <Provider store={store}><App /></Provider>,
+  document.getElementById('root')
+)
 registerServiceWorker()
