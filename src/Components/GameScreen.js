@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom'
 
 // React Sibling Components
 import Modal from './Modal'
+import GameBoard from './GameBoard'
+import PegRow from './PegRow'
 
 // Redux Imports
 import {connect} from 'react-redux'
@@ -13,17 +15,10 @@ import {toggleMainModalWindow} from '../redux/actions'
 
 class GameScreen extends Component {
   render () {
-    console.log('[GameScreen.js] what is toggle? ', this.props.isMainModalOpen)
     return (
       <div className="GameScreen-container">
-        <div className="GameScreen-board">
-          <h1>HELLO TESTER</h1>
-          <Link to='/'>
-            <button className="GameScreen-btn"
-              onClick={() => this.props.toggleMainModal()}>DEBUG-RESET</button>
-          </Link>
-          {this.props.isMainModalOpen && <Modal/>}
-        </div>
+        <GameBoard />
+        {this.props.isMainModalOpen && <Modal/>}
       </div>
     )
   }

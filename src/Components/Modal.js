@@ -8,6 +8,12 @@ import {toggleMainModalWindow, setPlayerName} from '../redux/actions'
 import { SoloGameModeButtons, MultiGameModeButtons } from './Button';
 
 class Modal extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      userName: ''
+    }
+  }
   onBtnClick (e) {
     if(e.target.value == 'single'){
       console.log("YOU WANT SINGLE PLAYER")
