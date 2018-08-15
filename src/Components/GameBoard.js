@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import './GameBoard.css'
 import './Button'
 
-import PegRow from './PegRow'
+import PegRow from './PegRow/PegRow'
 
 // Redux Imports
 import {connect} from 'react-redux'
@@ -12,13 +12,16 @@ class GameBoard extends Component {
   render () {
     return (
       <div className="GameBoard-container">
-        <div className="GameBoard-heading">
-          {console.log('[GameBoard.js] Player name is: ', this.props.playerName)}
-          Welcome {this.props.playerName}
-        </div>
-        <div className="GameBoard-playarea">
-          <PegRow />
-        </div>
+        <PegRow />
+        <PegRow />
+        <PegRow />
+        <PegRow />
+        <PegRow />
+        <PegRow />
+        <PegRow />
+        <PegRow />
+        <PegRow />
+        <PegRow />
       </div>
     )
   }
@@ -26,8 +29,8 @@ class GameBoard extends Component {
 
 function mapStateToProps (state) {
   return {
-    isMainModalOpen: state.isMainModalOpen,
-    playerName: state.playerName
+    isMainModalOpen: state.isMainModalOpen
+
   }
 }
 function mapDispatchToProps (dispatch) {

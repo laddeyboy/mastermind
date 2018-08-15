@@ -1,10 +1,10 @@
 var initialState = {
   gameName: 'MasterMind',
-  playerName: "TESTING Player",
+  playerName: '',
   isMainModalOpen: true
 }
 
-function mmStore (state, action){
+function mmStore (state, action) {
   if (state === undefined) {
     return initialState
   }
@@ -15,7 +15,7 @@ function mmStore (state, action){
       newState.isMainModalOpen = !newState.isMainModalOpen
       return newState
     case 'SET_PLAYER_NAME':
-      var newState = {...state}
+      newState = {...state}
       newState.playerName = action.data
       return newState
     default:

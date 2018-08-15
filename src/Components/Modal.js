@@ -23,7 +23,13 @@ class Modal extends Component {
     this.props.toggleMainModal()
   }
 
+  setNameHandler = (event) => {
+    console.log("I'm setting the name", event.target.value)
+    this.props.setPlayerName(event.target.value)
+  }
+
   render () {
+
     return (
       <div className="Modal-background">
         <div className="Modal-window">
@@ -33,9 +39,9 @@ class Modal extends Component {
           <div>
             <input className="Modal-name-input"
               type="text"
-              value=""
+              value={this.props.playerName}
               placeholder="Enter Player Name"
-              onChange={e => this.props.setPlayerName(e.target.value)}></input>
+              onChange={this.setNameHandler}></input>
           </div>
           <div className="Modal-buttons">
             <label htmlFor="btns">Select a game mode:</label><br/>
@@ -54,7 +60,8 @@ class Modal extends Component {
 
 function mapStateToProps (state) {
   return {
-    isMainModalOpen: state.isMainModalOpen
+    isMainModalOpen: state.isMainModalOpen,
+    playerName: state.playerName
   }
 }
 function mapDispatchToProps (dispatch) {
@@ -63,7 +70,7 @@ function mapDispatchToProps (dispatch) {
       dispatch(toggleMainModalWindow())
     },
     setPlayerName: (data) => {
-      dispatch(setPlayerName())
+      dispatch(setPlayerName(data))
     }
   }
 }

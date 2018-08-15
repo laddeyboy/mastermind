@@ -1,20 +1,15 @@
 .GameBoard-container {
-  height: 100vh;
-}
-
-.GameBoard-heading {
-  height: 10vh;
-  text-align: center;
-  background-color: black;
-  color: white;
-  font-size: 2em;
-}
-
-.GameBoard-playarea {
-  height: 100vh;
-  Width: 50vw;
-  margin-top: 10%;
+  height: 75vh;
+  width: 300px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
+  margin-left: 45vw;
+}
+
+@media (max-width: 550px) {
+  .GameBoard-container {
+    margin-top: 0px;
+    margin-left: 10%;
+  }
 }

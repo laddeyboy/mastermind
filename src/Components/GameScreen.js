@@ -7,16 +7,20 @@ import {Link} from 'react-router-dom'
 // React Sibling Components
 import Modal from './Modal'
 import GameBoard from './GameBoard'
-import PegRow from './PegRow'
+import PegRow from './PegRow/PegRow'
 
 // Redux Imports
 import {connect} from 'react-redux'
-import {toggleMainModalWindow} from '../redux/actions'
+import {toggleMainModalWindow, setPlayerName} from '../redux/actions'
 
 class GameScreen extends Component {
   render () {
     return (
       <div className="GameScreen-container">
+        <div className="GameScreen-heading">
+          {console.log('[GameBoard.js] Player name is: ', this.props.playerName)}
+          Welcome {this.props.playerName}
+        </div>
         <GameBoard />
         {this.props.isMainModalOpen && <Modal/>}
       </div>
@@ -26,13 +30,17 @@ class GameScreen extends Component {
 
 function mapStateToProps (state) {
   return {
-    isMainModalOpen: state.isMainModalOpen
+    isMainModalOpen: state.isMainModalOpen,
+    playerName: state.playerName
   }
 }
 function mapDispatchToProps (dispatch) {
   return {
     toggleMainModal: () => {
       dispatch(toggleMainModalWindow())
+    },
+    setPlayerName: (data) => {
+      dispatch(setPlayerName())
     }
   }
 }

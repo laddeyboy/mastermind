@@ -22,6 +22,9 @@
 
 -Mastermind or Master Mind is a code-breaking game for two players.  More info can be found here: <https://en.wikipedia.org/wiki/Mastermind_(board_game)>
 
+Peg Colors: Red, Yellow, Blue, Green, Gray(default)
+Marker Colors: Black, White, Gray(default)
+
 ### Built With (what languages/libraries were used)
 
 - React
@@ -38,6 +41,7 @@
 
 1) Reset the isMainModalOpen flag to true when navigating back to the main page '/'
 2) Potentially change the modal to a full screen modal on mobile screens
+3) Tutorial/Instruction Modals/Screens
 
 ### MVP
 
