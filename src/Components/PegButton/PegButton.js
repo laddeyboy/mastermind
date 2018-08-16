@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 
 const pegBtnStyle = {
   height: '40px',
@@ -12,18 +12,34 @@ function deepCopy (x) {
   return JSON.parse(JSON.stringify(x))
 }
 
-const pegButton = (props) => {
-  // pegBtnStyle.backgroundColor = props.color
-  let btnStyle = deepCopy(pegBtnStyle)
-  if (props.color) {
-    btnStyle.backgroundColor = props.color
+class PegButton extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      backgroundColor: ''
+    }
   }
-  return (
-    <div style={btnStyle}
-      onClick={() => {
-        console.log('You CLICKED me')
-      }}></div>
-  )
+  PegBtnHandler () {
+    if (this.props.template) {
+      console.log('You want to set color to', this.props.color)
+      this.setState({backgroundColor: this.props.color})
+      console.log('[PegButton.js] did I set color?', this.state.backgroundColor)
+    } else {
+      console.log(this.state.backgroundColor)
+    }
+  }
+
+  render () {
+    let btnStyle = deepCopy(pegBtnStyle)
+    if (this.props.color) {
+      btnStyle.backgroundColor = this.props.color
+    }
+    return (
+      <div style={btnStyle}
+        onClick={() => this.PegBtnHandler()}
+      ></div>
+    )
+  }
 }
 
-export default pegButton
+export default PegButton

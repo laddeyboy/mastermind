@@ -1,11 +1,12 @@
 import React from 'react'
 
 const markerBtnStyle = {
-  height: '20px',
-  width: '20px',
+  height: '15px',
+  width: '15px',
   border: '1px solid black',
   borderRadius: '50%',
-  backgroundColor: 'gray'
+  backgroundColor: 'gray',
+  margin: '2px'
 }
 
 function deepCopy (x) {

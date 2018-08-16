@@ -3,6 +3,7 @@ import './GameBoard.css'
 import './Button'
 
 import PegRow from './PegRow/PegRow'
+import ColorPalette from './ColorPalette/ColorPalette'
 
 // Redux Imports
 import {connect} from 'react-redux'
@@ -22,6 +23,10 @@ class GameBoard extends Component {
         <PegRow />
         <PegRow />
         <PegRow />
+        <div className="GameBoard-template-header">
+          <p>Select Your Color Below</p>
+        </div>
+        <ColorPalette />
       </div>
     )
   }

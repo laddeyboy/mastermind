@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-import IntroScreen from './Components/IntroScreen'
+import IntroScreen from './Components/IntroScreen/IntroScreen'
 
 class App extends Component {
   render () {

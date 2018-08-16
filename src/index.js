@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker'
 
 // React Router Dependencies
 import {Route, BrowserRouter} from 'react-router-dom'
-import IntroScreen from './Components/IntroScreen'
+import IntroScreen from './Components/IntroScreen/IntroScreen'
 import GameScreen from './Components/GameScreen'
 
 // Redux Dependencies

@@ -18,7 +18,6 @@ class GameScreen extends Component {
     return (
       <div className="GameScreen-container">
         <div className="GameScreen-heading">
-          {console.log('[GameBoard.js] Player name is: ', this.props.playerName)}
           Welcome {this.props.playerName}
         </div>
         <GameBoard />
