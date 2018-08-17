@@ -6,12 +6,10 @@ import {Link} from 'react-router-dom'
 
 // React Sibling Components
 import Modal from './Modal'
-import GameBoard from './GameBoard'
-import PegRow from './PegRow/PegRow'
+import GameBoard from './GameBoard/GameBoard'
 
 // Redux Imports
 import {connect} from 'react-redux'
-import {toggleMainModalWindow, setPlayerName} from '../redux/actions'
 
 class GameScreen extends Component {
   render () {
@@ -21,7 +19,8 @@ class GameScreen extends Component {
           Welcome {this.props.playerName}
         </div>
         <GameBoard />
-        {this.props.isMainModalOpen && <Modal/>}
+        {/* Activate modal later
+        {this.props.isMainModalOpen && <Modal/>} */}
       </div>
     )
   }
@@ -33,17 +32,7 @@ function mapStateToProps (state) {
     playerName: state.playerName
   }
 }
-function mapDispatchToProps (dispatch) {
-  return {
-    toggleMainModal: () => {
-      dispatch(toggleMainModalWindow())
-    },
-    setPlayerName: (data) => {
-      dispatch(setPlayerName())
-    }
-  }
-}
 
-var reduxGameScreen = connect(mapStateToProps, mapDispatchToProps)(GameScreen)
+var reduxGameScreen = connect(mapStateToProps)(GameScreen)
 
 export default reduxGameScreen

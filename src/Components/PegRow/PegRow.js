@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './PegRow.css'
 import PegButton from '../PegButton/PegButton'
-import MarkerBox from '../MarkerBox/MarkerBox'
+import MarkerButton from '../MarkerButton/MarkerButton'
 
 // Redux Imports
 import {connect} from 'react-redux'
@@ -14,14 +14,17 @@ class PegRow extends Component {
     return (
 
       <div className="PegRow-container">
-        <div className="PegRow-btn-container">
+        <div className="PegRow-btns">
           <PegButton clickFn={setBtnBackgroundColor}/>
           <PegButton clickFn={setBtnBackgroundColor}/>
           <PegButton clickFn={setBtnBackgroundColor}/>
           <PegButton clickFn={setBtnBackgroundColor}/>
         </div>
-        <div className="PegRow-markers-container">
-          <MarkerBox />
+        <div className="PegRow-markers">
+          <MarkerButton />
+          <MarkerButton />
+          <MarkerButton />
+          <MarkerButton />
         </div>
       </div>
     )

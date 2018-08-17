@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import './Modal.css'
-import './Button'
 
 // Redux Imports
 import {connect} from 'react-redux'
@@ -8,10 +7,10 @@ import {toggleMainModalWindow, setPlayerName} from '../redux/actions'
 
 class SoloGameMode extends Component {
   onBtnClick (e) {
-    if(e.target.value == 'single'){
-      console.log("YOU WANT SINGLE PLAYER")
+    if (e.target.value == 'single') {
+      console.log('YOU WANT SINGLE PLAYER')
     } else {
-      console.log("YOU WANT MULTIPLAYER")
+      console.log('YOU WANT MULTIPLAYER')
     }
     this.props.toggleMainModal()
   }

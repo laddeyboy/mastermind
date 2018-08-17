@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import './Modal.css'
-import './Button'
+
 
 // Redux Imports
 import {connect} from 'react-redux'
 import {toggleMainModalWindow, setPlayerName} from '../redux/actions'
-import { SoloGameModeButtons, MultiGameModeButtons } from './Button';
+
 
 class Modal extends Component {
   constructor(props) {
@@ -50,8 +50,7 @@ class Modal extends Component {
             <button className="Modal-btn"
               onClick={() => this.onBtnClick()}>Multiplayer</button>
           </div>
-          {/* <SoloGameModeButtons />
-          <MultiGameModeButtons /> */}
+
         </div>
       </div>
     )

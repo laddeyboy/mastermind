@@ -1,6 +1,6 @@
 var initialState = {
   gameName: 'MasterMind',
-  playerName: '',
+  playerName: 'Dev Player',
   isMainModalOpen: true,
   activeColor: 'white'
 }

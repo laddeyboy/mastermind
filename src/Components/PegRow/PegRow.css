@@ -8,20 +8,22 @@
   /* border: 2px solid black; */
 }
 
-.PegRow-btn-container {
+.PegRow-btns {
   height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-grow: 3fr;
   flex-grow: 2;
   border: 2px solid black;
 }
 
-.PegRow-markers-container {
-  flex-grow: 1fr;
+.PegRow-markers {
   flex-grow: 1;
+  width: 20px;
   border: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .PegRow-btn {

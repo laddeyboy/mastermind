@@ -13,8 +13,11 @@ class ColorPalette extends Component {
   }
   render () {
     return (
-      <div className="ColorP-container">
-        <div className="ColorP-btn-container">
+      <div className="palette-container">
+        <div className="palette-header">
+          <p>Set Peg Color Below</p>
+        </div>
+        <div className="palette-btn-container">
           <PegButton clickFn={() => this.setPaletteColor('red')} color="red"/>
           <PegButton clickFn={() => this.setPaletteColor('blue')} color="blue"/>
           <PegButton clickFn={() => this.setPaletteColor('yellow')} color="yellow"/>
