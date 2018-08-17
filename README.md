@@ -34,7 +34,7 @@ Marker Colors: Black, White, Gray(default)
 ### Challenges & Solutions
 
 1) Stylings when switching between full screen and mobile screens is still an issue.
-2) TBD
+2) Setting color template state, using local props.  What I wound up doing is trying to set the color of "this" button.  Instead of changing the color of another button.  SOLUTION: Move the color flag into the Redux Store.
 3) TBD
 
 ### Functionality/Items to Implement

@@ -1,7 +1,8 @@
 var initialState = {
   gameName: 'MasterMind',
   playerName: '',
-  isMainModalOpen: true
+  isMainModalOpen: true,
+  activeColor: 'white'
 }
 
 function mmStore (state, action) {
@@ -17,6 +18,10 @@ function mmStore (state, action) {
     case 'SET_PLAYER_NAME':
       newState = {...state}
       newState.playerName = action.data
+      return newState
+    case 'SET_ACTIVE_COLOR':
+      newState = {...state}
+      newState.activeColor = action.data
       return newState
     default:
       return state

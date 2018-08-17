@@ -1,5 +1,6 @@
 const TOGGLE_MAIN_MODAL = 'TOGGLE_MAIN_MODAL'
 const SET_PLAYER_NAME = 'SET_PLAYER_NAME'
+const SET_ACTIVE_COLOR = 'SET_ACTIVE_COLOR'
 
 export function toggleMainModalWindow () {
   return {
@@ -9,6 +10,12 @@ export function toggleMainModalWindow () {
 export function setPlayerName (data) {
   return {
     type: SET_PLAYER_NAME,
+    data: data
+  }
+}
+export function setActiveColor (data) {
+  return {
+    type: SET_ACTIVE_COLOR,
     data: data
   }
 }
