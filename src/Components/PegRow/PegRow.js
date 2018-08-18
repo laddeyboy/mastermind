@@ -12,7 +12,11 @@ class PegRow extends Component {
   render () {
     const setBtnBackgroundColor = (btnId) => {
       // I want to set my gameboard with the activeColor at the rowIndex, colIndex
-      this.props.setPegColor(this.props.rowId, btnId, this.props.activeColor)
+      if (this.props.rowId === this.props.currentAttempt) {
+        this.props.setPegColor(this.props.rowId, btnId, this.props.activeColor)
+      } else {
+        console.log('[PegRow.js] your playing on the wrong turn')
+      }
     }
 
     return (
@@ -23,7 +27,7 @@ class PegRow extends Component {
           <PegButton clickFn={() => setBtnBackgroundColor(2)} rowInd={this.props.rowId} colInd={2}/>
           <PegButton clickFn={() => setBtnBackgroundColor(3)} rowInd={this.props.rowId} colInd={3}/>
         </div>
-        <div className="PegRow-markers">
+        <div className="PegRow-markers" onClick={this.props.checkGuess}>
           <MarkerButton />
           <MarkerButton />
           <MarkerButton />
@@ -37,6 +41,7 @@ class PegRow extends Component {
 function mapStateToProps (state) {
   return {
     activeColor: state.activeColor,
+    currentAttempt: state.currentAttempt,
     gameboard: state.gameboard
   }
 }

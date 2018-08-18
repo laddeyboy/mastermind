@@ -25,6 +25,8 @@
 Peg Colors: Red, Yellow, Blue, Green, Gray(default)
 Marker Colors: Black, White, Gray(default)
 
+Only a single click on a marker square to prevent accidentaly "double click" and thus removing one turn.  Maybe a turn flag for each marker state?
+
 ### Built With (what languages/libraries were used)
 
 - React

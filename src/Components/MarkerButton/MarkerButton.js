@@ -20,10 +20,7 @@ const markerButton = (props) => {
     btnStyle.backgroundColor = props.color
   }
   return (
-    <div style={btnStyle}
-      onClick={() => {
-        console.log('You CLICKED me')
-      }}></div>
+    <div style={btnStyle}></div>
   )
 }
 

@@ -3,6 +3,8 @@ const initialState = {
   playerName: 'Dev Player',
   isMainModalOpen: true,
   activeColor: 'white',
+  currentAttempt: 0,
+  correctSequence: ['red', 'blue', 'yellow', 'green'],
   gameboard: [
     ['white', 'white', 'white', 'white'],
     ['white', 'white', 'white', 'white'],
@@ -40,6 +42,10 @@ function mmStore (state, action) {
       newState = {...state}
       newState.gameboard = {...state.gameboard}
       newState.gameboard[action.rowIndex][action.colIndex] = action.data
+      return newState
+    case 'INCREMENT_ATTEMPT':
+      newState = {...state}
+      newState.currentAttempt += 1
       return newState
     default:
       return state
