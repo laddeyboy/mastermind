@@ -2,9 +2,10 @@ const initialState = {
   gameName: 'MasterMind',
   playerName: 'Dev Player',
   isMainModalOpen: true,
+  newGame: true,
   activeColor: 'white',
   currentAttempt: 0,
-  correctSequence: ['red', 'blue', 'yellow', 'green'],
+  correctSequence: [],
   gameboard: [
     ['white', 'white', 'white', 'white'],
     ['white', 'white', 'white', 'white'],
@@ -46,6 +47,15 @@ function mmStore (state, action) {
     case 'INCREMENT_ATTEMPT':
       newState = {...state}
       newState.currentAttempt += 1
+      return newState
+    case 'SET_FINAL_SEQUENCE':
+      newState = {...state}
+      newState.correctSequence = action.data
+      return newState
+    case 'TOGGLE_NEW_GAME':
+      // copy state
+      newState = {...state}
+      newState.newGame = !newState.newGame
       return newState
     default:
       return state

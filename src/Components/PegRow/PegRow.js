@@ -28,10 +28,10 @@ class PegRow extends Component {
           <PegButton clickFn={() => setBtnBackgroundColor(3)} rowInd={this.props.rowId} colInd={3}/>
         </div>
         <div className="PegRow-markers" onClick={this.props.checkGuess}>
+          <MarkerButton color='gray'/>
           <MarkerButton />
-          <MarkerButton />
-          <MarkerButton />
-          <MarkerButton />
+          <MarkerButton color='black'/>
+          <MarkerButton color='white'/>
         </div>
       </div>
     )

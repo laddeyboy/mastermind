@@ -3,18 +3,25 @@ import './GameBoard.css'
 
 import PegRow from '../PegRow/PegRow'
 import ColorPalette from '../ColorPalette/ColorPalette'
-import {checkPlayerSequenece} from '../../gameLogic'
+import {setSolutionSequence, checkPlayerSequenece} from '../../gameLogic'
 
 // Redux Imports
 import {connect} from 'react-redux'
-import {toggleMainModalWindow, setPlayerName, incrementAttemptCtr} from '../../redux/actions'
+import {toggleMainModalWindow, setPlayerName, incrementAttemptCtr,
+  setFinalSequence, toggleNewGame} from '../../redux/actions'
 
 class GameBoard extends Component {
   render () {
+    if (this.props.newGame) {
+      this.props.setFinalSequence(setSolutionSequence())
+      this.props.toggleNewGame()
+    }
     const checkGuess = (rowId) => {
       if (this.props.currentAttempt < 10) {
         if (checkPlayerSequenece(this.props.correctSequence, this.props.gameboard[rowId])) {
           console.log('WINNER')
+        } else {
+          console.log('KEEP TRYING')
         }
         this.props.incrementAttemptCtr()
       } else {
@@ -43,6 +50,7 @@ class GameBoard extends Component {
 function mapStateToProps (state) {
   return {
     isMainModalOpen: state.isMainModalOpen,
+    newGame: state.newGame,
     activeColor: state.activeColor,
     currentAttempt: state.currentAttempt,
     correctSequence: state.correctSequence,
@@ -59,6 +67,12 @@ function mapDispatchToProps (dispatch) {
     },
     incrementAttemptCtr: () => {
       dispatch(incrementAttemptCtr())
+    },
+    setFinalSequence: (data) => {
+      dispatch(setFinalSequence(data))
+    },
+    toggleNewGame: () => {
+      dispatch(toggleNewGame())
     }
   }
 }

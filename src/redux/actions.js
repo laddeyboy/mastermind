@@ -3,6 +3,8 @@ const SET_PLAYER_NAME = 'SET_PLAYER_NAME'
 const SET_ACTIVE_COLOR = 'SET_ACTIVE_COLOR'
 const SET_PEG_COLOR = 'SET_PEG_COLOR'
 const INCREMENT_ATTEMPT = 'INCREMENT_ATTEMPT'
+const SET_FINAL_SEQUENCE = 'SET_FINAL_SEQUENCE'
+const TOGGLE_NEW_GAME = 'TOGGLE_NEW_GAME'
 
 export function toggleMainModalWindow () {
   return {
@@ -32,5 +34,17 @@ export function setPegColor (rowIndex, colIndex, data) {
 export function incrementAttemptCtr () {
   return {
     type: INCREMENT_ATTEMPT
+  }
+}
+
+export function setFinalSequence (data) {
+  return {
+    type: SET_FINAL_SEQUENCE,
+    data: data
+  }
+}
+export function toggleNewGame () {
+  return {
+    type: TOGGLE_NEW_GAME
   }
 }

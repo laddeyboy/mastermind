@@ -14,7 +14,6 @@ function deepCopy (x) {
 }
 
 const markerButton = (props) => {
-  // pegBtnStyle.backgroundColor = props.color
   let btnStyle = deepCopy(markerBtnStyle)
   if (props.color) {
     btnStyle.backgroundColor = props.color
