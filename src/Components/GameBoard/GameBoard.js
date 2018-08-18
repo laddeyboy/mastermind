@@ -10,18 +10,20 @@ import {toggleMainModalWindow, setPlayerName} from '../../redux/actions'
 
 class GameBoard extends Component {
   render () {
+    console.log('[GameBoard.js] is selectPaletteColor working', this.props.activeColor)
+    console.log('[GameBoard.js] is gameboard', this.props.gameboard)
     return (
       <div className="GameBoard-container">
-        <PegRow />
-        <PegRow />
-        <PegRow />
-        <PegRow />
-        <PegRow />
-        <PegRow />
-        <PegRow />
-        <PegRow />
-        <PegRow />
-        <PegRow />
+        <PegRow rowId='0'/>
+        <PegRow rowId='1'/>
+        <PegRow rowId='2'/>
+        <PegRow rowId='3'/>
+        <PegRow rowId='4'/>
+        <PegRow rowId='5'/>
+        <PegRow rowId='6'/>
+        <PegRow rowId='7'/>
+        <PegRow rowId='8'/>
+        <PegRow rowId='9'/>
         <ColorPalette />
       </div>
     )
@@ -30,7 +32,9 @@ class GameBoard extends Component {
 
 function mapStateToProps (state) {
   return {
-    isMainModalOpen: state.isMainModalOpen
+    isMainModalOpen: state.isMainModalOpen,
+    activeColor: state.activeColor,
+    gameboard: state.gameboard
   }
 }
 function mapDispatchToProps (dispatch) {
@@ -44,6 +48,6 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-var reduxGameBoard = connect(mapDispatchToProps, mapDispatchToProps)(GameBoard)
+var reduxGameBoard = connect(mapStateToProps, mapDispatchToProps)(GameBoard)
 
 export default reduxGameBoard

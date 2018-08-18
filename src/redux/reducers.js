@@ -1,8 +1,20 @@
-var initialState = {
+const initialState = {
   gameName: 'MasterMind',
   playerName: 'Dev Player',
   isMainModalOpen: true,
-  activeColor: 'white'
+  activeColor: 'white',
+  gameboard: [
+    ['white', 'white', 'white', 'white'],
+    ['white', 'white', 'white', 'white'],
+    ['white', 'white', 'white', 'white'],
+    ['white', 'white', 'white', 'white'],
+    ['white', 'white', 'white', 'white'],
+    ['white', 'white', 'white', 'white'],
+    ['white', 'white', 'white', 'white'],
+    ['white', 'white', 'white', 'white'],
+    ['white', 'white', 'white', 'white'],
+    ['white', 'white', 'white', 'white']
+  ]
 }
 
 function mmStore (state, action) {
@@ -22,6 +34,12 @@ function mmStore (state, action) {
     case 'SET_ACTIVE_COLOR':
       newState = {...state}
       newState.activeColor = action.data
+      return newState
+    case 'SET_PEG_COLOR':
+    // this may not work?  am I return the whole updated gameboard back or just an item?
+      newState = {...state}
+      newState.gameboard = {...state.gameboard}
+      newState.gameboard[action.rowIndex][action.colIndex] = action.data
       return newState
     default:
       return state

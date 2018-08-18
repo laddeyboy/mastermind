@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+// Redux Imports
+import {connect} from 'react-redux'
 
 const pegBtnStyle = {
   height: '40px',
@@ -16,6 +18,10 @@ class PegButton extends Component {
     let btnStyle = deepCopy(pegBtnStyle)
     if (this.props.color) {
       btnStyle.backgroundColor = this.props.color
+    } else {
+      let row = this.props.rowInd
+      let col = this.props.colInd
+      btnStyle.backgroundColor = this.props.gameboard[row][col]
     }
     return (
       <div style={btnStyle} onClick={this.props.clickFn}>
@@ -24,4 +30,13 @@ class PegButton extends Component {
   }
 }
 
-export default PegButton
+function mapStateToProps (state) {
+  return {
+    activeColor: state.activeColor,
+    gameboard: state.gameboard
+  }
+}
+
+var reduxPegButton = connect(mapStateToProps)(PegButton)
+
+export default reduxPegButton

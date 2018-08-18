@@ -1,6 +1,9 @@
-import { createStore } from 'redux'
+import { createStore, compose } from 'redux'
 import mmStore from './reducers'
 
-var store = createStore(mmStore)
+const enhancers = compose(
+  window.devToolsExtension ? window.devToolsExtension() : f => f)
+
+var store = createStore(mmStore, enhancers)
 
 export default store

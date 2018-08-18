@@ -1,6 +1,7 @@
 const TOGGLE_MAIN_MODAL = 'TOGGLE_MAIN_MODAL'
 const SET_PLAYER_NAME = 'SET_PLAYER_NAME'
 const SET_ACTIVE_COLOR = 'SET_ACTIVE_COLOR'
+const SET_PEG_COLOR = 'SET_PEG_COLOR'
 
 export function toggleMainModalWindow () {
   return {
@@ -16,6 +17,15 @@ export function setPlayerName (data) {
 export function setActiveColor (data) {
   return {
     type: SET_ACTIVE_COLOR,
+    data: data
+  }
+}
+
+export function setPegColor (rowIndex, colIndex, data) {
+  return {
+    type: SET_PEG_COLOR,
+    rowIndex: rowIndex,
+    colIndex: colIndex,
     data: data
   }
 }

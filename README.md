@@ -35,7 +35,7 @@ Marker Colors: Black, White, Gray(default)
 
 1) Stylings when switching between full screen and mobile screens is still an issue.
 2) Setting color template state, using local props.  What I wound up doing is trying to set the color of "this" button.  Instead of changing the color of another button.  SOLUTION: Move the color flag into the Redux Store.
-3) TBD
+3) Changing the background color of a button on a click. I approached this from a purely UI standpoint trying to affect the background color through React with a 'gamestate'.  This cause muliple issues that ultimately never changed the color.  However, after introducting a 'gameboard' state into my redux store and reading the background colors from that state, the buttons almost immediate started rendering the correct color.
 
 ### Functionality/Items to Implement
 

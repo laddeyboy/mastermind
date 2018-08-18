@@ -15,7 +15,7 @@ class Modal extends Component {
     }
   }
   onBtnClick (e) {
-    if(e.target.value == 'single'){
+    if(e.target.value === 'single'){
       console.log("YOU WANT SINGLE PLAYER")
     } else {
       console.log("YOU WANT MULTIPLAYER")

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import logo from '../logo.svg'
 import './GameScreen.css'
 // React Router Dependency
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
 // React Sibling Components
 import Modal from './Modal'
