@@ -17,6 +17,11 @@ class PegButton extends Component {
   render () {
     let btnStyle = deepCopy(pegBtnStyle)
     if (this.props.color) {
+      if (this.props.color === this.props.activeColor) {
+        btnStyle.height = '50px'
+        btnStyle.width = '50px'
+        btnStyle.border = '3px solid #00d8ff'
+      }
       btnStyle.backgroundColor = this.props.color
     } else {
       let row = this.props.rowInd

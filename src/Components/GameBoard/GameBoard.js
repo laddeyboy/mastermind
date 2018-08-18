@@ -10,7 +10,6 @@ import {toggleMainModalWindow, setPlayerName} from '../../redux/actions'
 
 class GameBoard extends Component {
   render () {
-    console.log('[GameBoard.js] is selectPaletteColor working', this.props.activeColor)
     console.log('[GameBoard.js] is gameboard', this.props.gameboard)
     return (
       <div className="GameBoard-container">
