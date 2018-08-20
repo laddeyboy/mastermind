@@ -1,7 +1,9 @@
 const initialState = {
   gameName: 'MasterMind',
-  playerName: 'Dev Player',
+  playerName: 'Enter Player Name',
   isMainModalOpen: true,
+  showEndScreen: false,
+  finalMsg: '',
   newGame: true,
   activeColor: 'white',
   currentAttempt: 0,
@@ -77,6 +79,11 @@ function mmStore (state, action) {
     case 'TOGGLE_MARKER_TILE':
       newState = {...state}
       newState.markerTiles[action.rowIndex] = !newState.markerTiles[action.rowIndex]
+      return newState
+    case 'SHOW_END_SCREEN':
+      newState = {...state}
+      newState.finalMsg = action.data
+      newState.showEndScreen = !newState.showEndScreen
       return newState
     default:
       return state

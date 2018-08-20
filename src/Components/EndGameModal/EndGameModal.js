@@ -1,19 +1,13 @@
 import React, {Component} from 'react'
-import './Modal.css'
-
 
 // Redux Imports
 import {connect} from 'react-redux'
-import {toggleMainModalWindow, setPlayerName} from '../redux/actions'
+import {toggleMainModalWindow, setPlayerName} from '../../redux/actions'
+
+import PegButton from '../PegButton/PegButton'
 
 
-class Modal extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      userName: ''
-    }
-  }
+class EndGameModal extends Component {
   onBtnClick (e) {
     if(e.target.value === 'single'){
       console.log("YOU WANT SINGLE PLAYER")
@@ -36,18 +30,12 @@ class Modal extends Component {
             Mastermind
           </div>
           <div>
-            <input className="Modal-name-input"
-              type="text"
-              value={this.props.playerName}
-              placeholder="Enter Player Name"
-              onChange={this.setNameHandler}></input>
+            <h1>{this.props.finalMsg}</h1>
           </div>
           <div className="Modal-buttons">
-            <label htmlFor="btns">Select a game mode:</label><br/>
+            {/* show solution and last playerSequence */}
             <button className="Modal-btn" id="btns" value="single"
-              onClick={(e) => this.onBtnClick(e)}>Single Player</button>
-            <button className="Modal-btn"
-              onClick={() => this.onBtnClick()}>Multiplayer</button>
+              onClick={(e) => this.onBtnClick(e)}>Play Again?</button>
           </div>
 
         </div>
@@ -59,7 +47,9 @@ class Modal extends Component {
 function mapStateToProps (state) {
   return {
     isMainModalOpen: state.isMainModalOpen,
-    playerName: state.playerName
+    playerName: state.playerName.EndGameModal,
+    finalMsg: state.finalMsg,
+    correctSequence: state.correctSequence
   }
 }
 function mapDispatchToProps (dispatch) {
@@ -73,6 +63,6 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-var reduxModal = connect(mapStateToProps, mapDispatchToProps)(Modal)
+var reduxEndGameModal = connect(mapStateToProps, mapDispatchToProps)(EndGameModal)
 
-export default reduxModal
+export default reduxEndGameModal

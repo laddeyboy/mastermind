@@ -8,7 +8,8 @@ import {setSolutionSequence, checkPlayerSequenece} from '../../gameLogic'
 // Redux Imports
 import {connect} from 'react-redux'
 import {toggleMainModalWindow, setPlayerName, incrementAttemptCtr,
-  setFinalSequence, toggleNewGame, setMarkerColor, toggleMarkerTile} from '../../redux/actions'
+  setFinalSequence, toggleNewGame, setMarkerColor, toggleMarkerTile,
+  showEndScreen} from '../../redux/actions'
 
 function playerWins (markerArray) {
   return markerArray.reduce(function (markerCount, item) {
@@ -38,12 +39,13 @@ class GameBoard extends Component {
           this.props.toggleMarkerTile(rowId)
           if (markerCt === 4) {
           // all pegs are correct End the Game
-            console.log('WINNER')
+          // SHOW SET WINNER MODAL FLAG and RENDER IT
+            this.props.showEndScreen('WINNER')
           } else { // increment turn counter
             this.props.incrementAttemptCtr()
           }
         } else {
-          console.log('GAME OVER')
+          this.props.showEndScreen('TRY AGAIN')
         }
       } else {
         console.log('CLICKED WRONG ROW')
@@ -100,6 +102,9 @@ function mapDispatchToProps (dispatch) {
     },
     toggleMarkerTile: (rowIndex) => {
       dispatch(toggleMarkerTile(rowIndex))
+    },
+    showEndScreen: (data) => {
+      dispatch(showEndScreen(data))
     }
   }
 }

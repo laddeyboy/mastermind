@@ -7,10 +7,17 @@ const INCREMENT_ATTEMPT = 'INCREMENT_ATTEMPT'
 const SET_FINAL_SEQUENCE = 'SET_FINAL_SEQUENCE'
 const TOGGLE_NEW_GAME = 'TOGGLE_NEW_GAME'
 const TOGGLE_MARKER_TILE = 'TOGGLE_MARKER_TILE'
+const SHOW_END_SCREEN = 'SHOW_END_SCREEN'
 
 export function toggleMainModalWindow () {
   return {
     type: TOGGLE_MAIN_MODAL
+  }
+}
+export function showEndScreen (data) {
+  return {
+    type: SHOW_END_SCREEN,
+    data: data
   }
 }
 export function setPlayerName (data) {

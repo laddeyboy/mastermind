@@ -7,6 +7,7 @@ import './GameScreen.css'
 // React Sibling Components
 import Modal from './Modal'
 import GameBoard from './GameBoard/GameBoard'
+import EndGameModal from './EndGameModal/EndGameModal'
 
 // Redux Imports
 import {connect} from 'react-redux'
@@ -19,8 +20,8 @@ class GameScreen extends Component {
           Welcome {this.props.playerName}
         </div>
         <GameBoard />
-        {/* Activate modal later
-        {this.props.isMainModalOpen && <Modal/>} */}
+        {this.props.isMainModalOpen && <Modal/>}
+        {this.props.showEndScreen && <EndGameModal/>}
       </div>
     )
   }
@@ -29,6 +30,7 @@ class GameScreen extends Component {
 function mapStateToProps (state) {
   return {
     isMainModalOpen: state.isMainModalOpen,
+    showEndScreen: state.showEndScreen,
     playerName: state.playerName
   }
 }
