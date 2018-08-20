@@ -11,9 +11,10 @@ mastermindgame.jladdy.org
 ### Contents
 
 ```javascript
-- App functionality
+- App Features
+  - Built With (Dependencies)
+  - Versions (MVP)
   - Stretch Goals
-- Languages Used
 - Challenges & Solutions
 - Screenshots
 - GitHub Link
@@ -21,12 +22,13 @@ mastermindgame.jladdy.org
 - Testing (library like chai or mocha/examples)
 ```
 
-### App functionality
+### App Features
 
-#### Languages used
+#### Built With (Dependencies)
 
-- React
-- Redux
+- React (create-react-app)
+- React-Router (npm install react-router-dom)
+- Redux (npm install react-redux)
 - JSX
 - CSS3
 
