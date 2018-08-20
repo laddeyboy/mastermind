@@ -13,7 +13,13 @@ class PegRow extends Component {
     const setBtnBackgroundColor = (btnId) => {
       // I want to set my gameboard with the activeColor at the rowIndex, colIndex
       if (this.props.rowId === this.props.currentAttempt) {
-        this.props.setPegColor(this.props.rowId, btnId, this.props.activeColor)
+        // change peg color to white on a second click IF still current active palette color
+        let currentBtn = this.props.gameboard[this.props.rowId][btnId]
+        if (currentBtn === this.props.activeColor && currentBtn !== 'white') {
+          this.props.setPegColor(this.props.rowId, btnId, 'white')
+        } else {
+          this.props.setPegColor(this.props.rowId, btnId, this.props.activeColor)
+        }
       } else {
         console.log('[PegRow.js] your playing on the wrong turn')
       }
