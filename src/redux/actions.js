@@ -2,6 +2,7 @@ const TOGGLE_MAIN_MODAL = 'TOGGLE_MAIN_MODAL'
 const SET_PLAYER_NAME = 'SET_PLAYER_NAME'
 const SET_ACTIVE_COLOR = 'SET_ACTIVE_COLOR'
 const SET_PEG_COLOR = 'SET_PEG_COLOR'
+const SET_MARKER_COLOR = 'SET_MARKER_COLOR'
 const INCREMENT_ATTEMPT = 'INCREMENT_ATTEMPT'
 const SET_FINAL_SEQUENCE = 'SET_FINAL_SEQUENCE'
 const TOGGLE_NEW_GAME = 'TOGGLE_NEW_GAME'
@@ -31,6 +32,15 @@ export function setPegColor (rowIndex, colIndex, data) {
     data: data
   }
 }
+export function setMarkerColor (rowIndex, colIndex, data) {
+  return {
+    type: SET_MARKER_COLOR,
+    rowIndex: rowIndex,
+    colIndex: colIndex,
+    data: data
+  }
+}
+
 export function incrementAttemptCtr () {
   return {
     type: INCREMENT_ATTEMPT

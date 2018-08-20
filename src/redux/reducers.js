@@ -17,6 +17,18 @@ const initialState = {
     ['white', 'white', 'white', 'white'],
     ['white', 'white', 'white', 'white'],
     ['white', 'white', 'white', 'white']
+  ],
+  markerBackgrounds: [
+    ['gray', 'gray', 'gray', 'gray'],
+    ['gray', 'gray', 'gray', 'gray'],
+    ['gray', 'gray', 'gray', 'gray'],
+    ['gray', 'gray', 'gray', 'gray'],
+    ['gray', 'gray', 'gray', 'gray'],
+    ['gray', 'gray', 'gray', 'gray'],
+    ['gray', 'gray', 'gray', 'gray'],
+    ['gray', 'gray', 'gray', 'gray'],
+    ['gray', 'gray', 'gray', 'gray'],
+    ['gray', 'gray', 'gray', 'gray']
   ]
 }
 
@@ -39,10 +51,14 @@ function mmStore (state, action) {
       newState.activeColor = action.data
       return newState
     case 'SET_PEG_COLOR':
-    // this may not work?  am I return the whole updated gameboard back or just an item?
       newState = {...state}
       newState.gameboard = {...state.gameboard}
       newState.gameboard[action.rowIndex][action.colIndex] = action.data
+      return newState
+    case 'SET_MARKER_COLOR':
+      newState = {...state}
+      newState.markerBackgrounds = {...state.markerBackgrounds}
+      newState.markerBackgrounds[action.rowIndex][action.colIndex] = action.data
       return newState
     case 'INCREMENT_ATTEMPT':
       newState = {...state}
@@ -53,7 +69,6 @@ function mmStore (state, action) {
       newState.correctSequence = action.data
       return newState
     case 'TOGGLE_NEW_GAME':
-      // copy state
       newState = {...state}
       newState.newGame = !newState.newGame
       return newState

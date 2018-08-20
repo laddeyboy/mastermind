@@ -8,7 +8,7 @@ import {setSolutionSequence, checkPlayerSequenece} from '../../gameLogic'
 // Redux Imports
 import {connect} from 'react-redux'
 import {toggleMainModalWindow, setPlayerName, incrementAttemptCtr,
-  setFinalSequence, toggleNewGame} from '../../redux/actions'
+  setFinalSequence, toggleNewGame, setMarkerColor} from '../../redux/actions'
 
 class GameBoard extends Component {
   render () {
@@ -18,17 +18,27 @@ class GameBoard extends Component {
     }
     const checkGuess = (rowId) => {
       if (this.props.currentAttempt < 10) {
-        if (checkPlayerSequenece(this.props.correctSequence, this.props.gameboard[rowId])) {
+        let markerArray = checkPlayerSequenece(this.props.correctSequence, this.props.gameboard[rowId])
+        console.log('ARRAY RETURNED: ', markerArray)
+        let markerCt = markerArray.reduce(function (markerCount, item) {
+          if (item === 'black') {
+            return markerCount + 1
+          }
+        }, 0)
+        if (markerCt === 4) {
           console.log('WINNER')
         } else {
-          console.log('KEEP TRYING')
+          // increment turn counter
+          for (let i = 0; i < markerArray.length; i++) {
+            console.log('[GameBoard.js] color ', markerArray[i])
+            this.props.setMarkerColor(this.props.currentAttempt, i, markerArray[i])
+          }
+          this.props.incrementAttemptCtr()
         }
-        this.props.incrementAttemptCtr()
       } else {
         console.log('GAME OVER')
       }
     }
-    // console.log('[GameBoard.js] is gameboard', this.props.gameboard)
     return (
       <div className="GameBoard-container">
         <PegRow rowId={0} checkGuess={() => checkGuess(0)}/>
@@ -73,6 +83,9 @@ function mapDispatchToProps (dispatch) {
     },
     toggleNewGame: () => {
       dispatch(toggleNewGame())
+    },
+    setMarkerColor: (rowIndex, colIndex, data) => {
+      dispatch(setMarkerColor(rowIndex, colIndex, data))
     }
   }
 }

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {Component} from 'react'
+// Redux Imports
+import {connect} from 'react-redux'
 
 const markerBtnStyle = {
   height: '15px',
@@ -13,14 +15,25 @@ function deepCopy (x) {
   return JSON.parse(JSON.stringify(x))
 }
 
-const markerButton = (props) => {
-  let btnStyle = deepCopy(markerBtnStyle)
-  if (props.color) {
-    btnStyle.backgroundColor = props.color
+class MarkerButton extends Component {
+  render () {
+    let btnStyle = deepCopy(markerBtnStyle)
+    // let row = this.props.rowInd
+    // let col = this.props.colInd
+    // btnStyle.backgroundColor = this.props.markerBackgrounds[row][col]
+    btnStyle.backgroundColor = this.props.color
+    return (
+      <div style={btnStyle}></div>
+    )
   }
-  return (
-    <div style={btnStyle}></div>
-  )
 }
 
-export default markerButton
+function mapStateToProps (state) {
+  return {
+    markerBackgrounds: state.markerBackgrounds
+  }
+}
+
+var reduxMarkerButton = connect(mapStateToProps)(MarkerButton)
+
+export default reduxMarkerButton

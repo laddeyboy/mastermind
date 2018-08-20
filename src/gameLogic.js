@@ -10,31 +10,40 @@ export function setSolutionSequence () {
   return solutions
 }
 
-function playerWins (solution, playerSequence) {
-  for (let i = 0; i < solution.length; i++) {
-    if (solution[i] !== playerSequence[i]) {
-      return false
-    }
-  }
-  return true
+function deepCopy (x) {
+  return JSON.parse(JSON.stringify(x))
 }
 
 export function checkPlayerSequenece (solution, playerSequence) {
-  if (playerWins(solution, playerSequence)) {
-    return true
+  // I have to deep copy my array here.
+  if (solution.length !== 4 || playerSequence.length !== 4) {
+    console.log('ERROR: something went wrong array lengths NOT equal')
   }
-  // let tempSolution = solution
-  // let tempPlayerSequence = playerSequence
-  // let numBlackPegs = 0
-  // for (let i = 0; i < solution.length; i++) {
-  //   if (tempSolution[i] === tempPlayerSequence[i]) {
-  //     numBlackPegs += 1
-  //     tempSolution.splice(i, 1)
-  //     tempPlayerSequence.splice(i, 1)
-  //   }
-  // }
-  // if (numBlackPegs === 4) {
-  //   // player Wins
-  //   return true
-  // }
+  let tempSolution = deepCopy(solution)
+  let tempPlayerSequence = deepCopy(playerSequence)
+  let markerBackgrounds = []
+  for (let i = 0; i < tempPlayerSequence.length; i++) {
+    if (tempPlayerSequence[i] === tempSolution[i]) {
+      markerBackgrounds.push('black')
+      tempPlayerSequence.splice(i, 1)
+      tempSolution.splice(i, 1)
+      i -= 1
+    }
+  }
+  for (let i = 0; i < tempPlayerSequence.length; i++) {
+    for (let j = 0; j < tempSolution.length; j++) {
+      if (tempPlayerSequence[i] === tempSolution[j]) {
+        markerBackgrounds.push('white')
+        tempPlayerSequence.splice(i, 1)
+        tempSolution.splice(j, 1)
+        i -= 1
+        j -= 1
+      }
+    }
+  }
+  while (markerBackgrounds.length < 4) {
+    markerBackgrounds.push('gray')
+  }
+  return markerBackgrounds
+  // return [blackCtr, whiteCtr]
 }
