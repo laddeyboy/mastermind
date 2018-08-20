@@ -33,16 +33,18 @@ class PegRow extends Component {
           <PegButton clickFn={() => setBtnBackgroundColor(2)} rowInd={this.props.rowId} colInd={2}/>
           <PegButton clickFn={() => setBtnBackgroundColor(3)} rowInd={this.props.rowId} colInd={3}/>
         </div>
-        <div className="PegRow-markers" onClick={this.props.checkGuess}>
-          {/* <MarkerButton rowInd={this.props.rowId} colInd={0}/>
-          <MarkerButton rowInd={this.props.rowId} colInd={1}/>
-          <MarkerButton rowInd={this.props.rowId} colInd={2}/>
-          <MarkerButton rowInd={this.props.rowId} colInd={3}/> */}
-          <MarkerButton color={this.props.markerBackgrounds[this.props.rowId][0]}/>
-          <MarkerButton color={this.props.markerBackgrounds[this.props.rowId][1]}/>
-          <MarkerButton color={this.props.markerBackgrounds[this.props.rowId][2]}/>
-          <MarkerButton color={this.props.markerBackgrounds[this.props.rowId][3]}/>
-        </div>
+        {/* conditionally show this div if it's that attempt disable clicks on any other row */}
+        {!this.props.markerTiles[this.props.rowId]
+          ? <div className="PegRow-markers" >
+            <MarkerButton color={this.props.markerBackgrounds[this.props.rowId][0]}/>
+            <MarkerButton color={this.props.markerBackgrounds[this.props.rowId][1]}/>
+            <MarkerButton color={this.props.markerBackgrounds[this.props.rowId][2]}/>
+            <MarkerButton color={this.props.markerBackgrounds[this.props.rowId][3]}/>
+          </div>
+          : <div className="PegRow-markers tile">
+            <button className="PegRow-verify-btn" onClick={this.props.checkGuess}>Play</button>
+          </div>
+        }
       </div>
     )
   }
@@ -53,7 +55,8 @@ function mapStateToProps (state) {
     activeColor: state.activeColor,
     currentAttempt: state.currentAttempt,
     markerBackgrounds: state.markerBackgrounds,
-    gameboard: state.gameboard
+    gameboard: state.gameboard,
+    markerTiles: state.markerTiles
   }
 }
 function mapDispatchToProps (dispatch) {

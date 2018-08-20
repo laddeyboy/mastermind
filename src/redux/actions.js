@@ -6,6 +6,7 @@ const SET_MARKER_COLOR = 'SET_MARKER_COLOR'
 const INCREMENT_ATTEMPT = 'INCREMENT_ATTEMPT'
 const SET_FINAL_SEQUENCE = 'SET_FINAL_SEQUENCE'
 const TOGGLE_NEW_GAME = 'TOGGLE_NEW_GAME'
+const TOGGLE_MARKER_TILE = 'TOGGLE_MARKER_TILE'
 
 export function toggleMainModalWindow () {
   return {
@@ -56,5 +57,11 @@ export function setFinalSequence (data) {
 export function toggleNewGame () {
   return {
     type: TOGGLE_NEW_GAME
+  }
+}
+export function toggleMarkerTile (rowIndex) {
+  return {
+    type: TOGGLE_MARKER_TILE,
+    rowIndex: rowIndex
   }
 }

@@ -8,7 +8,15 @@ import {setSolutionSequence, checkPlayerSequenece} from '../../gameLogic'
 // Redux Imports
 import {connect} from 'react-redux'
 import {toggleMainModalWindow, setPlayerName, incrementAttemptCtr,
-  setFinalSequence, toggleNewGame, setMarkerColor} from '../../redux/actions'
+  setFinalSequence, toggleNewGame, setMarkerColor, toggleMarkerTile} from '../../redux/actions'
+
+function playerWins (markerArray) {
+  return markerArray.reduce(function (markerCount, item) {
+    if (item === 'black') {
+      return markerCount + 1
+    }
+  }, 0)
+}
 
 class GameBoard extends Component {
   render () {
@@ -16,27 +24,29 @@ class GameBoard extends Component {
       this.props.setFinalSequence(setSolutionSequence())
       this.props.toggleNewGame()
     }
+
     const checkGuess = (rowId) => {
-      if (this.props.currentAttempt < 10) {
-        let markerArray = checkPlayerSequenece(this.props.correctSequence, this.props.gameboard[rowId])
-        console.log('ARRAY RETURNED: ', markerArray)
-        let markerCt = markerArray.reduce(function (markerCount, item) {
-          if (item === 'black') {
-            return markerCount + 1
-          }
-        }, 0)
-        if (markerCt === 4) {
-          console.log('WINNER')
-        } else {
-          // increment turn counter
+      if (rowId === this.props.currentAttempt) {
+        if (this.props.currentAttempt < 9) {
+          let solution = this.props.correctSequence
+          let playerGuess = this.props.gameboard[rowId]
+          let markerArray = checkPlayerSequenece(solution, playerGuess)
+          let markerCt = playerWins(markerArray)
           for (let i = 0; i < markerArray.length; i++) {
-            console.log('[GameBoard.js] color ', markerArray[i])
             this.props.setMarkerColor(this.props.currentAttempt, i, markerArray[i])
           }
-          this.props.incrementAttemptCtr()
+          this.props.toggleMarkerTile(rowId)
+          if (markerCt === 4) {
+          // all pegs are correct End the Game
+            console.log('WINNER')
+          } else { // increment turn counter
+            this.props.incrementAttemptCtr()
+          }
+        } else {
+          console.log('GAME OVER')
         }
       } else {
-        console.log('GAME OVER')
+        console.log('CLICKED WRONG ROW')
       }
     }
     return (
@@ -64,7 +74,8 @@ function mapStateToProps (state) {
     activeColor: state.activeColor,
     currentAttempt: state.currentAttempt,
     correctSequence: state.correctSequence,
-    gameboard: state.gameboard
+    gameboard: state.gameboard,
+    markerTiles: state.markerTiles
   }
 }
 function mapDispatchToProps (dispatch) {
@@ -86,6 +97,9 @@ function mapDispatchToProps (dispatch) {
     },
     setMarkerColor: (rowIndex, colIndex, data) => {
       dispatch(setMarkerColor(rowIndex, colIndex, data))
+    },
+    toggleMarkerTile: (rowIndex) => {
+      dispatch(toggleMarkerTile(rowIndex))
     }
   }
 }

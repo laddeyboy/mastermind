@@ -29,7 +29,9 @@ const initialState = {
     ['gray', 'gray', 'gray', 'gray'],
     ['gray', 'gray', 'gray', 'gray'],
     ['gray', 'gray', 'gray', 'gray']
-  ]
+  ],
+  markerTiles: ['false', 'false', 'false', 'false', 'false',
+    'false', 'false', 'false', 'false', 'false']
 }
 
 function mmStore (state, action) {
@@ -71,6 +73,10 @@ function mmStore (state, action) {
     case 'TOGGLE_NEW_GAME':
       newState = {...state}
       newState.newGame = !newState.newGame
+      return newState
+    case 'TOGGLE_MARKER_TILE':
+      newState = {...state}
+      newState.markerTiles[action.rowIndex] = !newState.markerTiles[action.rowIndex]
       return newState
     default:
       return state
