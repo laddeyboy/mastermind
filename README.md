@@ -12,7 +12,7 @@ mastermindgame.jladdy.org
 
 ```javascript
 - App functionality
--- Stretch Goals
+  - Stretch Goals
 - Languages Used
 - Challenges & Solutions
 - Screenshots
@@ -42,10 +42,10 @@ Black markers indicate the player's sequence has a peg of the correct color in t
 #### Stretch Goals
 
 - Allow for Multiplayer
---Mode 1: User 1 selects sequence and User 2 attempts to solve
---Mode 2: User 1 and User 2 compete to see who can solve in the least number of steps
+  -Mode 1: User 1 selects sequence and User 2 attempts to solve
+  -Mode 2: User 1 and User 2 compete to see who can solve in the least number of steps
 -Single  Player (Hard Mode):
---Not only color pegs, but different colored shapes. So you have to guess the color and the shape to get right.
+  -Not only color pegs, but different colored shapes. So you have to guess the color and the shape to get right.
 -Can I make the IntroScreen text animate from Danh Hong font to English and transition back on a loop?
 
 
