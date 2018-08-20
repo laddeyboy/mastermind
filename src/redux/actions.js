@@ -48,7 +48,6 @@ export function setMarkerColor (rowIndex, colIndex, data) {
     data: data
   }
 }
-
 export function incrementAttemptCtr () {
   return {
     type: INCREMENT_ATTEMPT

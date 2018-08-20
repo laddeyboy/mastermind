@@ -4,7 +4,7 @@ import './Modal.css'
 
 // Redux Imports
 import {connect} from 'react-redux'
-import {toggleMainModalWindow, setPlayerName} from '../redux/actions'
+import {toggleMainModalWindow, setPlayerName} from '../../redux/actions'
 
 
 class Modal extends Component {

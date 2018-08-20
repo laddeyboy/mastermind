@@ -5,7 +5,7 @@ import './GameScreen.css'
 // import {Link} from 'react-router-dom'
 
 // React Sibling Components
-import Modal from './Modal'
+import Modal from './Modal/Modal'
 import GameBoard from './GameBoard/GameBoard'
 import EndGameModal from './EndGameModal/EndGameModal'
 
