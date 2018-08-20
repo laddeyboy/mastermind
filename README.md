@@ -15,7 +15,7 @@ mastermindgame.jladdy.org
   - Built With (Dependencies)
   - Versions (MVP)
   - Stretch Goals
-- Challenges & Solutions
+- Challenges and Solutions
 - Screenshots
 - GitHub Link
 - Code Examples
