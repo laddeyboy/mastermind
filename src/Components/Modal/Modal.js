@@ -8,12 +8,7 @@ import {toggleMainModalWindow, setPlayerName} from '../../redux/actions'
 
 
 class Modal extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      userName: ''
-    }
-  }
+
   onBtnClick (e) {
     if(e.target.value === 'single'){
       console.log("YOU WANT SINGLE PLAYER")
@@ -40,6 +35,7 @@ class Modal extends Component {
               type="text"
               value={this.props.playerName}
               placeholder="Enter Player Name"
+              onFocus={(e) => e.target.value=""}
               onChange={this.setNameHandler}></input>
           </div>
           <div className="Modal-buttons">
