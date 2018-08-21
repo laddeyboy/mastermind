@@ -11,8 +11,6 @@ class EndGameModal extends Component {
   onBtnClick (e) {
     if(e.target.value === 'single'){
       console.log("YOU WANT SINGLE PLAYER")
-    } else {
-      console.log("YOU WANT MULTIPLAYER")
     }
     this.props.toggleMainModal()
   }

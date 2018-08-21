@@ -14,7 +14,6 @@ class Modal extends Component {
     if(e.target.value === 'single'){
       this.props.toggleMainModal()
     } else if(e.target.value === 'objectives'){
-      console.log("SHOW OBJECTIVES")
       this.props.showObjectives()
     }
   }
