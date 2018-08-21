@@ -18,6 +18,10 @@ class Modal extends Component {
       this.props.showObjectives()
     }
   }
+  
+  closeObjectiveHandler = () => {
+    this.props.showObjectives()
+  }
 
   setNameHandler = (event) => {
     this.props.setPlayerName(event.target.value)
@@ -48,7 +52,7 @@ class Modal extends Component {
               onClick={(e) => this.onBtnClick(e)}>Objective</button>
           </div>
         </div>
-        : <Objectives />}
+        : <Objectives clicked={this.closeObjectiveHandler}/>}
       </div>
     )
   }

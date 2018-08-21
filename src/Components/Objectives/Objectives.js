@@ -13,11 +13,12 @@ const centerText = {
   listStyleType: 'none'
 }
 
-const Objectives = () => {
+const Objectives = (props) => {
   return (
-    <div className="Objective-window">
+    <div className="Objective-window" onClick={props.clicked}>
       <div className="Objective-heading">
         Objectives
+        {/* <span className="close" onClick={this.props.clicked}>&times;</span> */}
       </div>
       <div>
         <div>
