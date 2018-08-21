@@ -1,21 +1,22 @@
 import React, {Component} from 'react'
 import './Modal.css'
+import Objectives from '../Objectives/Objectives'
 
 
 // Redux Imports
 import {connect} from 'react-redux'
-import {toggleMainModalWindow, setPlayerName} from '../../redux/actions'
+import {toggleMainModalWindow, setPlayerName, showObjectives} from '../../redux/actions'
 
 
 class Modal extends Component {
 
   onBtnClick (e) {
     if(e.target.value === 'single'){
-      console.log("YOU WANT SINGLE PLAYER")
-    } else {
-      console.log("YOU WANT MULTIPLAYER")
+      this.props.toggleMainModal()
+    } else if(e.target.value === 'objectives'){
+      console.log("SHOW OBJECTIVES")
+      this.props.showObjectives()
     }
-    this.props.toggleMainModal()
   }
 
   setNameHandler = (event) => {
@@ -26,6 +27,7 @@ class Modal extends Component {
 
     return (
       <div className="Modal-background">
+      {!this.props.showObjective ?
         <div className="Modal-window">
           <div className="Modal-heading">
             Mastermind
@@ -39,14 +41,14 @@ class Modal extends Component {
               onChange={this.setNameHandler}></input>
           </div>
           <div className="Modal-buttons">
-            <label htmlFor="btns">Select a game mode:</label><br/>
+            {/* <label htmlFor="btns">Select a game mode:</label><br/> */}
             <button className="Modal-btn" id="btns" value="single"
               onClick={(e) => this.onBtnClick(e)}>Single Player</button>
-            <button className="Modal-btn"
-              onClick={() => this.onBtnClick()}>Multiplayer</button>
+            <button className="Modal-btn" value="objectives"
+              onClick={(e) => this.onBtnClick(e)}>Objective</button>
           </div>
-
         </div>
+        : <Objectives />}
       </div>
     )
   }
@@ -55,7 +57,8 @@ class Modal extends Component {
 function mapStateToProps (state) {
   return {
     isMainModalOpen: state.isMainModalOpen,
-    playerName: state.playerName
+    playerName: state.playerName,
+    showObjective: state.showObjectives
   }
 }
 function mapDispatchToProps (dispatch) {
@@ -65,6 +68,9 @@ function mapDispatchToProps (dispatch) {
     },
     setPlayerName: (data) => {
       dispatch(setPlayerName(data))
+    },
+    showObjectives: () => {
+      dispatch(showObjectives())
     }
   }
 }

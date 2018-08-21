@@ -8,10 +8,16 @@ const SET_FINAL_SEQUENCE = 'SET_FINAL_SEQUENCE'
 const TOGGLE_NEW_GAME = 'TOGGLE_NEW_GAME'
 const TOGGLE_MARKER_TILE = 'TOGGLE_MARKER_TILE'
 const SHOW_END_SCREEN = 'SHOW_END_SCREEN'
+const SHOW_OBJECTIVES = 'SHOW_OBJECTIVES'
 
 export function toggleMainModalWindow () {
   return {
     type: TOGGLE_MAIN_MODAL
+  }
+}
+export function showObjectives () {
+  return {
+    type: SHOW_OBJECTIVES
   }
 }
 export function showEndScreen (data) {

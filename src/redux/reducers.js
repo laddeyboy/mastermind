@@ -2,6 +2,7 @@ const initialState = {
   gameName: 'MasterMind',
   playerName: 'Enter Player Name',
   isMainModalOpen: true,
+  showObjectives: false,
   showEndScreen: false,
   finalMsg: '',
   newGame: true,
@@ -45,6 +46,10 @@ function mmStore (state, action) {
       // copy state
       var newState = {...state}
       newState.isMainModalOpen = !newState.isMainModalOpen
+      return newState
+    case 'SHOW_OBJECTIVES':
+      newState = {...state}
+      newState.showObjectives = !newState.showObjectives
       return newState
     case 'SET_PLAYER_NAME':
       newState = {...state}
