@@ -9,29 +9,29 @@ import {setPegColor} from '../../redux/actions'
 
 class PegRow extends Component {
   // this comes in with a local prop of rowIndex
-  render () {
-    const setBtnBackgroundColor = (btnId) => {
-      // I want to set my gameboard with the activeColor at the rowIndex, colIndex
-      if (this.props.rowId === this.props.currentAttempt) {
-        // change peg color to white on a second click IF still current active palette color
-        let currentBtn = this.props.gameboard[this.props.rowId][btnId]
-        if (currentBtn === this.props.activeColor && currentBtn !== 'white') {
-          this.props.setPegColor(this.props.rowId, btnId, 'white')
-        } else {
-          this.props.setPegColor(this.props.rowId, btnId, this.props.activeColor)
-        }
+  setBtnBackgroundColor (btnId) {
+    // I want to set my gameboard with the activeColor at the rowIndex, colIndex
+    if (this.props.rowId === this.props.currentAttempt) {
+      // change peg color to white on a second click IF still current active palette color
+      let currentBtn = this.props.gameboard[this.props.rowId][btnId]
+      if (currentBtn === this.props.activeColor && currentBtn !== 'white') {
+        this.props.setPegColor(this.props.rowId, btnId, 'white')
       } else {
-        console.log('[PegRow.js] your playing on the wrong turn')
+        this.props.setPegColor(this.props.rowId, btnId, this.props.activeColor)
       }
+    } else {
+      console.log('[PegRow.js] your playing on the wrong turn')
     }
+  }
 
+  render () {
     return (
       <div className="PegRow-container">
         <div className="PegRow-btns">
-          <PegButton clickFn={() => setBtnBackgroundColor(0)} rowInd={this.props.rowId} colInd={0}/>
-          <PegButton clickFn={() => setBtnBackgroundColor(1)} rowInd={this.props.rowId} colInd={1}/>
-          <PegButton clickFn={() => setBtnBackgroundColor(2)} rowInd={this.props.rowId} colInd={2}/>
-          <PegButton clickFn={() => setBtnBackgroundColor(3)} rowInd={this.props.rowId} colInd={3}/>
+          <PegButton clickFn={() => this.setBtnBackgroundColor(0)} rowInd={this.props.rowId} colInd={0}/>
+          <PegButton clickFn={() => this.setBtnBackgroundColor(1)} rowInd={this.props.rowId} colInd={1}/>
+          <PegButton clickFn={() => this.setBtnBackgroundColor(2)} rowInd={this.props.rowId} colInd={2}/>
+          <PegButton clickFn={() => this.setBtnBackgroundColor(3)} rowInd={this.props.rowId} colInd={3}/>
         </div>
         {/* conditionally show this div if it's that attempt disable clicks on any other row */}
         {!this.props.markerTiles[this.props.rowId]

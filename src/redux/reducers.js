@@ -1,6 +1,9 @@
+import { createRandomSolution, deepCopy } from '../gameLogic'
+
 const initialState = {
   gameName: 'MasterMind',
   playerName: 'Enter Player Name',
+  // playerName: '', // placeholder="Enter Player Name..."
   isMainModalOpen: true,
   showObjectives: false,
   showEndScreen: false,
@@ -8,7 +11,7 @@ const initialState = {
   newGame: true,
   activeColor: 'white',
   currentAttempt: 0,
-  correctSequence: [],
+  correctSequence: createRandomSolution(),
   gameboard: [
     ['white', 'white', 'white', 'white'],
     ['white', 'white', 'white', 'white'],
@@ -38,13 +41,14 @@ const initialState = {
 }
 
 function mmStore (state, action) {
-  if (state === undefined) {
-    return initialState
+  if (!state) {
+    return deepCopy(initialState)
   }
+  let newState = null
   switch (action.type) {
     case 'TOGGLE_MAIN_MODAL':
       // copy state
-      var newState = {...state}
+      newState = {...state}
       newState.isMainModalOpen = !newState.isMainModalOpen
       return newState
     case 'SHOW_OBJECTIVES':
@@ -89,6 +93,12 @@ function mmStore (state, action) {
       newState = {...state}
       newState.finalMsg = action.data
       newState.showEndScreen = !newState.showEndScreen
+      return newState
+    case 'RESET_GAME_STATE':
+      newState = deepCopy(initialState)
+      newState.correctSequence = createRandomSolution()
+      newState.playerName = state.playerName
+      newState.isMainModalOpen = state.isMainModalOpen
       return newState
     default:
       return state

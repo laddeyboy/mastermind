@@ -9,6 +9,7 @@ const TOGGLE_NEW_GAME = 'TOGGLE_NEW_GAME'
 const TOGGLE_MARKER_TILE = 'TOGGLE_MARKER_TILE'
 const SHOW_END_SCREEN = 'SHOW_END_SCREEN'
 const SHOW_OBJECTIVES = 'SHOW_OBJECTIVES'
+const RESET_GAME_STATE = 'RESET_GAME_STATE'
 
 export function toggleMainModalWindow () {
   return {
@@ -75,5 +76,10 @@ export function toggleMarkerTile (rowIndex) {
   return {
     type: TOGGLE_MARKER_TILE,
     rowIndex: rowIndex
+  }
+}
+export function resetGameState () {
+  return {
+    type: RESET_GAME_STATE
   }
 }

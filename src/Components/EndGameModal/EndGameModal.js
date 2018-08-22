@@ -2,25 +2,17 @@ import React, {Component} from 'react'
 
 // Redux Imports
 import {connect} from 'react-redux'
-import {toggleMainModalWindow, setPlayerName} from '../../redux/actions'
+import {toggleMainModalWindow, setPlayerName, resetGameState} from '../../redux/actions'
 
-import PegButton from '../PegButton/PegButton'
+// import PegButton from '../PegButton/PegButton'
 
 
 class EndGameModal extends Component {
-  onBtnClick (e) {
-    if(e.target.value === 'single'){
-      console.log("YOU WANT SINGLE PLAYER")
-    }
-    this.props.toggleMainModal()
+  
+  resetTheGame = () => {
+    this.props.resetGame()
   }
-
-  setNameHandler = (event) => {
-    this.props.setPlayerName(event.target.value)
-  }
-
   render () {
-
     return (
       <div className="Modal-background">
         <div className="Modal-window">
@@ -33,7 +25,7 @@ class EndGameModal extends Component {
           <div className="Modal-buttons">
             {/* show solution and last playerSequence */}
             <button className="Modal-btn" id="btns" value="single"
-              onClick={(e) => this.onBtnClick(e)}>Play Again?</button>
+              onClick={this.resetTheGame}>Play Again?</button>
           </div>
 
         </div>
@@ -57,6 +49,9 @@ function mapDispatchToProps (dispatch) {
     },
     setPlayerName: (data) => {
       dispatch(setPlayerName(data))
+    },
+    resetGame: () => {
+      dispatch(resetGameState())
     }
   }
 }

@@ -51,6 +51,8 @@ Black markers indicate the player's sequence has a peg of the correct color in t
   - Not only color pegs, but different colored shapes. So you have to guess the color and the shape to get right.
 - Can I make the IntroScreen text animate from Danh Hong font to English and transition back on a loop?
 - Display the Solutions PegRow and the Players last Sequence in the EndGameModal Screen win or lose.
+- Save Player Name and Modal State to Local Storage
+- Track wins and loses
 
 ### Challenges & Solutions
 

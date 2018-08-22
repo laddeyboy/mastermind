@@ -1,5 +1,5 @@
 
-export function setSolutionSequence () {
+export function createRandomSolution () {
   const colorTemplate = ['red', 'blue', 'yellow', 'green']
   let solutions = []
   for (let x = 0; x < 4; x++) {
@@ -10,7 +10,7 @@ export function setSolutionSequence () {
   return solutions
 }
 
-function deepCopy (x) {
+export function deepCopy (x) {
   return JSON.parse(JSON.stringify(x))
 }
 
