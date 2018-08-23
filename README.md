@@ -4,7 +4,7 @@ This is my final project for DigitalCrafts 2018 flex cohort coding boot camp.  T
 
 ## Live Demo
 
-mymastermind.jladdy.org
+mymastermind.herokuapp.com
 
 ### Video of App (Optional)
 
