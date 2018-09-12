@@ -1,12 +1,19 @@
 
-export function createRandomSolution () {
+export function createRandomSequence () {
+  const colorTemplate6 = ['black', 'red', 'yellow', 'green', 'blue', 'orange']
+  let solutions6 = []
+  for (let x = 0; x < 4; x++) {
+    solutions6.push(colorTemplate6[Math.floor(Math.random() * 6)])
+  }
+  console.log("[gameLogic.js] here's my sequence6 ", solutions6)
+  
+  
   const colorTemplate = ['red', 'blue', 'yellow', 'green']
   let solutions = []
   for (let x = 0; x < 4; x++) {
     solutions.push(colorTemplate[Math.floor(Math.random() * 4)])
   }
   console.log("[gameLogic.js] here's my sequence ", solutions)
-  // return a winning solution array
   return solutions
 }
 

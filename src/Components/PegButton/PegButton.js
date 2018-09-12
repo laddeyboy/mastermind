@@ -2,6 +2,22 @@ import React, {Component} from 'react'
 // Redux Imports
 import {connect} from 'react-redux'
 
+//really PegButton.js should only render a button and color it with the appropriate background color with a "template or a board piece"
+/*
+const pegButton = (activeColor, gameboard) => {
+  do some stuff????
+};
+
+const mapStateToProps = state => {
+  return {
+    pegButton: pegButton(state.activeColor, state.gameboard);
+  }
+}
+
+export default pegButton
+
+*/
+
 const pegBtnStyle = {
   height: '40px',
   width: '40px',

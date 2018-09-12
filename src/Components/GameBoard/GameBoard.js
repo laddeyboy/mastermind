@@ -22,8 +22,20 @@ function numBlackMarkers (markerArray) {
 }
 
 class GameBoard extends Component {
+
+  // returnPegRowArray() {
+  //   const pegRowArray = [];
+  //   for(let i = 0; i < 10; i++){
+  //     pegRowArray.push(<PegRow rowId={i} checkGuess={() => checkGuess({i})}/>)
+  //   }
+  //   return pegRowArray;
+  // }
+
+
   render () {
     const pegRowCount = 9
+    // const pegRowArray = this.returnPegRowArray()
+    // console.log('[Gameboard.js] what is the array??? ', pegRowArray)
     const checkGuess = (rowId) => {
       // defensive: this should never happen
       if (rowId !== this.props.currentAttempt) {

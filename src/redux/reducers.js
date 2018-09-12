@@ -1,4 +1,4 @@
-import { createRandomSolution, deepCopy } from '../gameLogic'
+import { createRandomSequence, deepCopy } from '../gameLogic'
 
 const initialState = {
   gameName: 'MasterMind',
@@ -11,7 +11,7 @@ const initialState = {
   newGame: true,
   activeColor: 'white',
   currentAttempt: 0,
-  correctSequence: createRandomSolution(),
+  correctSequence: createRandomSequence(),
   gameboard: [
     ['white', 'white', 'white', 'white'],
     ['white', 'white', 'white', 'white'],
@@ -96,7 +96,7 @@ function mmStore (state, action) {
       return newState
     case 'RESET_GAME_STATE':
       newState = deepCopy(initialState)
-      newState.correctSequence = createRandomSolution()
+      newState.correctSequence = createRandomSequence()
       newState.playerName = state.playerName
       newState.isMainModalOpen = state.isMainModalOpen
       return newState
