@@ -23,27 +23,21 @@ function numBlackMarkers (markerArray) {
 
 class GameBoard extends Component {
 
-  // returnPegRowArray() {
-  //   const pegRowArray = [];
-  //   for(let i = 0; i < 10; i++){
-  //     pegRowArray.push(<PegRow rowId={i} checkGuess={() => checkGuess({i})}/>)
-  //   }
-  //   return pegRowArray;
-  // }
+  returnPegRowArray(aNum) {
+    const pegRowArray = [];
+    for(let i = 0; i < aNum; i++){
+      pegRowArray.push(<PegRow key={i} rowId={i} checkGuess={() => this.checkGuess(i)}/>)
+    }
+    return pegRowArray;
+  }
 
-
-  render () {
-    const pegRowCount = 9
-    // const pegRowArray = this.returnPegRowArray()
-    // console.log('[Gameboard.js] what is the array??? ', pegRowArray)
-    const checkGuess = (rowId) => {
+  checkGuess = (rowId) => {
       // defensive: this should never happen
       if (rowId !== this.props.currentAttempt) {
         console.error('Uh-oh! Clicked the wrong row')
         return
       }
-
-      if (this.props.currentAttempt < pegRowCount) {
+      if (this.props.currentAttempt < 9) {
         const solution = this.props.correctSequence
         const playerGuess = this.props.gameboard[rowId]
         const markerArray = checkPlayerSequenece(solution, playerGuess)
@@ -54,7 +48,6 @@ class GameBoard extends Component {
         this.props.toggleMarkerTile(rowId)
         if (markerCt === 4) {
           // end the game if all of the user's pegs are correct
-          // SHOW SET WINNER MODAL FLAG and RENDER IT
           this.props.showEndScreen('WINNER')
         } else { // increment turn counter
           this.props.incrementAttemptCtr()
@@ -62,20 +55,14 @@ class GameBoard extends Component {
       } else {
         this.props.showEndScreen('TRY AGAIN')
       }
-    }
+  }
 
+
+  render () {
+    const pegRowArray = this.returnPegRowArray(10)
     return (
       <div className="GameBoard-container">
-        <PegRow rowId={0} checkGuess={() => checkGuess(0)}/>
-        <PegRow rowId={1} checkGuess={() => checkGuess(1)}/>
-        <PegRow rowId={2} checkGuess={() => checkGuess(2)}/>
-        <PegRow rowId={3} checkGuess={() => checkGuess(3)}/>
-        <PegRow rowId={4} checkGuess={() => checkGuess(4)}/>
-        <PegRow rowId={5} checkGuess={() => checkGuess(5)}/>
-        <PegRow rowId={6} checkGuess={() => checkGuess(6)}/>
-        <PegRow rowId={7} checkGuess={() => checkGuess(7)}/>
-        <PegRow rowId={8} checkGuess={() => checkGuess(8)}/>
-        <PegRow rowId={9} checkGuess={() => checkGuess(9)}/>
+        {pegRowArray}
         <ColorPalette />
       </div>
     )
