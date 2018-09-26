@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './PegRow.css'
-import PegButton from '../PegButton/PegButton'
+import PegButton from './PegButton/PegButton'
 import MarkerButton from '../MarkerButton/MarkerButton'
 
 // Redux Imports
@@ -28,10 +28,14 @@ class PegRow extends Component {
     return (
       <div className="PegRow-container">
         <div className="PegRow-btns">
-          <PegButton clickFn={() => this.setBtnBackgroundColor(0)} rowInd={this.props.rowId} colInd={0}/>
-          <PegButton clickFn={() => this.setBtnBackgroundColor(1)} rowInd={this.props.rowId} colInd={1}/>
-          <PegButton clickFn={() => this.setBtnBackgroundColor(2)} rowInd={this.props.rowId} colInd={2}/>
-          <PegButton clickFn={() => this.setBtnBackgroundColor(3)} rowInd={this.props.rowId} colInd={3}/>
+          <PegButton clickFn={() => this.setBtnBackgroundColor(0)} 
+            color={this.props.gameboard[this.props.rowId][0]}/>
+                      <PegButton clickFn={() => this.setBtnBackgroundColor(1)} 
+            color={this.props.gameboard[this.props.rowId][1]}/>
+                      <PegButton clickFn={() => this.setBtnBackgroundColor(2)} 
+            color={this.props.gameboard[this.props.rowId][2]}/>
+                      <PegButton clickFn={() => this.setBtnBackgroundColor(3)} 
+            color={this.props.gameboard[this.props.rowId][3]}/>
         </div>
         {/* conditionally show this div if it's that attempt disable clicks on any other row */}
         {!this.props.markerTiles[this.props.rowId]

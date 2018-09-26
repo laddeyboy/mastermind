@@ -27,6 +27,7 @@ class GameBoard extends Component {
     const pegRowArray = [];
     for(let i = 0; i < aNum; i++){
       pegRowArray.push(<PegRow key={i} rowId={i} checkGuess={() => this.checkGuess(i)}/>)
+      // pegRowArray.push(<PegRow key={i} rowId={i} checkGuess={this.props.checkGuess}/>)
     }
     return pegRowArray;
   }
@@ -85,30 +86,14 @@ function mapStateToProps (state) {
 }
 function mapDispatchToProps (dispatch) {
   return {
-    toggleMainModal: () => {
-      dispatch(toggleMainModalWindow())
-    },
-    setPlayerName: (data) => {
-      dispatch(setPlayerName())
-    },
-    incrementAttemptCtr: () => {
-      dispatch(incrementAttemptCtr())
-    },
-    setFinalSequence: (data) => {
-      dispatch(setFinalSequence(data))
-    },
-    toggleNewGame: () => {
-      dispatch(toggleNewGame())
-    },
-    setMarkerColor: (rowIndex, colIndex, data) => {
-      dispatch(setMarkerColor(rowIndex, colIndex, data))
-    },
-    toggleMarkerTile: (rowIndex) => {
-      dispatch(toggleMarkerTile(rowIndex))
-    },
-    showEndScreen: (data) => {
-      dispatch(showEndScreen(data))
-    }
+    toggleMainModal: () => dispatch(toggleMainModalWindow()),
+    setPlayerName: (data) => dispatch(setPlayerName()),
+    incrementAttemptCtr: () => dispatch(incrementAttemptCtr()),
+    setFinalSequence: (data) => dispatch(setFinalSequence(data)),
+    toggleNewGame: () => dispatch(toggleNewGame()),
+    setMarkerColor: (rowIndex, colIndex, data) => dispatch(setMarkerColor(rowIndex, colIndex, data)),
+    toggleMarkerTile: (rowIndex) => dispatch(toggleMarkerTile(rowIndex)),
+    showEndScreen: (data) => dispatch(showEndScreen(data))
   }
 }
 

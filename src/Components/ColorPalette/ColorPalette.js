@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './ColorPalette.css'
-import PegButton from '../PegButton/PegButton'
+import PegButton from '../PegRow/PegButton/PegButton'
 
 // Redux Imports
 import {connect} from 'react-redux'
