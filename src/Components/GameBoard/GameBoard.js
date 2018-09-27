@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './GameBoard.css'
 
-import PegRow from '../PegRow/PegRow'
+import PegRow from './PegRow/PegRow'
 import ColorPalette from '../ColorPalette/ColorPalette'
 import {checkPlayerSequenece} from '../../gameLogic'
 

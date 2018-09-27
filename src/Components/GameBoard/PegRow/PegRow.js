@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import './PegRow.css'
 import PegButton from './PegButton/PegButton'
-import MarkerButton from '../MarkerButton/MarkerButton'
+import MarkerButton from '../../MarkerButton/MarkerButton'
 
 // Redux Imports
 import {connect} from 'react-redux'
-import {setPegColor} from '../../redux/actions'
+import {setPegColor} from '../../../redux/actions'
 
 class PegRow extends Component {
   // this comes in with a local prop of rowIndex
@@ -30,11 +30,11 @@ class PegRow extends Component {
         <div className="PegRow-btns">
           <PegButton clickFn={() => this.setBtnBackgroundColor(0)} 
             color={this.props.gameboard[this.props.rowId][0]}/>
-                      <PegButton clickFn={() => this.setBtnBackgroundColor(1)} 
+          <PegButton clickFn={() => this.setBtnBackgroundColor(1)} 
             color={this.props.gameboard[this.props.rowId][1]}/>
-                      <PegButton clickFn={() => this.setBtnBackgroundColor(2)} 
+          <PegButton clickFn={() => this.setBtnBackgroundColor(2)} 
             color={this.props.gameboard[this.props.rowId][2]}/>
-                      <PegButton clickFn={() => this.setBtnBackgroundColor(3)} 
+          <PegButton clickFn={() => this.setBtnBackgroundColor(3)} 
             color={this.props.gameboard[this.props.rowId][3]}/>
         </div>
         {/* conditionally show this div if it's that attempt disable clicks on any other row */}

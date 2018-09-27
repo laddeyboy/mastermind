@@ -9,9 +9,10 @@ const initialState = {
   showEndScreen: false,
   finalMsg: '',
   newGame: true,
-  activeColor: 'white',
+  activeColor: '',
   currentAttempt: 0,
   correctSequence: createRandomSequence(),
+  colorTemplate: ['black', 'red', 'yellow', 'green', 'blue', 'orange'],
   gameboard: [
     ['white', 'white', 'white', 'white'],
     ['white', 'white', 'white', 'white'],

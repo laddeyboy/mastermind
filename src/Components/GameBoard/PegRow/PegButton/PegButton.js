@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 // Redux Imports
 import {connect} from 'react-redux'
 
@@ -9,29 +9,23 @@ const pegStyling = {
   borderRadius: '50%'
 }
 
-function deepCopy (x) {
+function deepCopy (obj) {
   // console.log('[PegButton.js] what it is', JSON.parse(JSON.stringify(x)))
-  return JSON.parse(JSON.stringify(x))
+  return JSON.parse(JSON.stringify(obj))
 }
 
 const PegButton = (props) => {
   let newPegStyle = deepCopy(pegStyling)
-    newPegStyle.backgroundColor = props.color
+  newPegStyle.backgroundColor = props.color
+  // if(props.color === props.activeColor){
+  //   newPegStyle.height = '50px'
+  //   newPegStyle.width = '50px'
+  //   newPegStyle.border = '3px solid #00d8ff'
+  // }
   return (
     <div style={newPegStyle} onClick={props.clickFn}></div>
   )
 }
-  // setPegStyling () {
-    //STILL NEED A WAY TO CHANGE ACTIVE COLOR PALETTE CSS
-  //   if (this.props.color) {
-  //     if (this.props.color === this.props.activeColor) {
-  //       btnStyle.height = '50px'
-  //       btnStyle.width = '50px'
-  //       btnStyle.border = '3px solid #00d8ff'
-  //     }
-  //     btnStyle.backgroundColor = this.props.color
-  //   }
-  // }
   
 function mapStateToProps (state) {
   return {
